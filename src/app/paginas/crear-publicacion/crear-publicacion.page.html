@@ -1,13 +1,54 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>crear-publicacion</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Publicación</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">crear-publicacion</ion-title>
+      <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
+      <ion-title size="large">Publicación</ion-title>
     </ion-toolbar>
   </ion-header>
+  <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-list lines="none">
+      <!-- Titulo -->
+      <ion-item>
+        <ion-input 
+          [(ngModel)]="titulo"
+          required="required" 
+          minlength="5"
+          label="Titulo"
+          labelPlacement="floating"
+          errorText="El titulo debe tener al menos 5 carácteres"
+          #tituloInput="ngModel" />
+      </ion-item>
+      <!-- Componente de fotografía -->
+      <ion-item>
+        <app-fotografia></app-fotografia>
+      </ion-item>
+      <!-- Descripción -->
+      <ion-item>
+        <ion-textarea 
+          [(ngModel)]="descripcion"     
+          required="required" 
+          minlength="20"
+          label="Descripción"
+          labelPlacement="floating"
+          errorText="La descripción debe tener al menos 20 carácteres"
+          autoGrow="true"
+          #descripcionInput="ngModel" />
+      </ion-item>
+    </ion-list>
+    <ion-button class="btn-agregar" [disabled]="!tituloInput.valid || !descripcionInput.valid" (click)="addPublicacion()">
+      Guardar
+    </ion-button>
 </ion-content>
