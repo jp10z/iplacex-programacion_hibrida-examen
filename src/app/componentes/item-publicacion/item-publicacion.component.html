@@ -1,0 +1,16 @@
+<ion-item>
+  <ion-img
+    [src]="'data:image/jpeg;base64, ' + fotografiaBase64"
+    alt="Fotografía de la publicación"
+    style="height: 80px;"
+    class="with-margin"
+  />
+  <ion-label class="with-margin" style="font-weight: bold;">{{titulo}}</ion-label>
+  <ion-label class="with-margin" style="color: #777777" slot="end">{{fecha | date: 'yyyy-MM-dd'}}</ion-label>
+  <ion-button
+    fill="clear" slot="end" size="default"
+    (click)="showModalDeletePublicacion()"
+  >
+    <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+  </ion-button>
+</ion-item>

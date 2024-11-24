@@ -1,0 +1,9 @@
+// Se agrega este css para que las imagenes no descuadren el diseño
+ion-img::part(image) {
+  width: 100px;
+}
+
+// Para agregar un margen a la derecha de los elementos
+.with-margin {
+  margin-right: 10px;
+}

@@ -1,0 +1,18 @@
+<ion-modal [isOpen]="isModalOpen">
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Eliminar publicación</ion-title>
+        <ion-buttons slot="end">
+          <ion-button (click)="closeModal()">Cancelar</ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-padding">
+      <p>
+        ¿Está seguro de que desea eliminar la publicación?
+      </p>
+      <ion-button color="danger" (click)="deletePublicacion()">Eliminar</ion-button>
+    </ion-content>
+  </ng-template>
+</ion-modal>

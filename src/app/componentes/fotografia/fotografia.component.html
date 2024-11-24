@@ -5,8 +5,17 @@
     <ion-icon slot="icon-only" name="camera-outline"></ion-icon>
     &nbsp;Fotografía
   </ion-button>
+  <!-- Se utiliza ngIf para cargar la imagen base64 en caso de que se haya capturado una foto -->
   <ion-img
-    [src]="fotografiaSRC"
+    *ngIf="fotografiaBase64"
+    [src]="'data:image/jpeg;base64, ' + fotografiaBase64"
+    alt="Imágen fotografica"
+    style="height: 120px;"
+  ></ion-img>
+  <!-- Se utiliza ngIf para cargar la imagen placeholder si es que aun no se capturado una foto -->
+  <ion-img
+    *ngIf="!fotografiaBase64"
+    src="assets/fotografia-placeholder.png"
     alt="Imágen fotografica"
     style="height: 120px;"
   ></ion-img>

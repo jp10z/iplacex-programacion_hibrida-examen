@@ -12,17 +12,17 @@ import {
   IonItem,
   IonInput,
   IonButton,
-  IonTextarea
-} from '@ionic/angular/standalone';
+  IonTextarea } from '@ionic/angular/standalone';
 import { FotografiaComponent } from "../../componentes/fotografia/fotografia.component";
 import { AlmacenamientoService } from 'src/app/servicios/almacenamiento.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-crear-publicacion',
   templateUrl: './crear-publicacion.page.html',
   styleUrls: ['./crear-publicacion.page.scss'],
   standalone: true,
-  imports: [
+  imports: [ 
     IonButton,
     IonItem,
     IonList,
@@ -50,7 +50,7 @@ export class CrearPublicacionPage implements OnInit {
   @ViewChild("tituloInput") tituloInput!: NgModel;
   @ViewChild("descripcionInput") descripcionInput!: NgModel;
 
-  constructor(private _almacenamientoService: AlmacenamientoService) {
+  constructor(private _almacenamientoService: AlmacenamientoService, private _router: Router) {
 
   }
 
@@ -81,6 +81,13 @@ export class CrearPublicacionPage implements OnInit {
       this.fotografiaBase64 ?? "",
       fecha
     );
+    // Limpiar
+    this.titulo = "";
+    this.descripcion = "";
+    this.fotografiaBase64 = undefined;
+    // Redirigir a la página de inicio, mediante router.
+    this._router.navigateByUrl('/publicaciones');
+
   }
 
 }

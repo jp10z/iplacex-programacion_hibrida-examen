@@ -10,6 +10,18 @@
       <ion-title size="large">Publicaciones</ion-title>
     </ion-toolbar>
   </ion-header>
+  <!-- Lista de las publicaciones -->
+  <ion-list>
+    <ng-container *ngFor="let publicacion of publicaciones">
+      <app-item-publicacion
+        [id]="publicacion.id"
+        [titulo]="publicacion.titulo"
+        [fotografiaBase64]="publicacion.fotografiaBase64"
+        [fecha]="publicacion.fecha"
+        (showModalDeletePublicacionEvent)="setModalEliminacionOpen($event)"
+      ></app-item-publicacion>
+    </ng-container>
+  </ion-list>
   <!-- Floating icon mostrado en la zona inferior derecha de la pantalla -->
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button [routerLink]="['/crear-publicacion']">
@@ -17,3 +29,11 @@
     </ion-fab-button>
   </ion-fab>
 </ion-content>
+
+<app-modal-eliminar-publicacion
+  [isModalOpen]="isModalEliminacionOpen"
+  (closeModalEvent)="closeModalEliminacion()"
+  (eliminarPublicacionEvent)="deletePublicacion()"
+>
+
+</app-modal-eliminar-publicacion>

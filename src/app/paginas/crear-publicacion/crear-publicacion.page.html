@@ -33,7 +33,7 @@
       </ion-item>
       <!-- Componente de fotografía -->
       <ion-item>
-        <app-fotografia (fotografiaBase64Change)="onFotografiaBase64Change($event)"></app-fotografia>
+        <app-fotografia [fotografiaBase64]="fotografiaBase64" (fotografiaBase64Change)="onFotografiaBase64Change($event)"></app-fotografia>
       </ion-item>
       <!-- Descripción -->
       <ion-item>
