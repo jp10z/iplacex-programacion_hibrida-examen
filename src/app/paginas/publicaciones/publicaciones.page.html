@@ -1,13 +1,13 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Publicaciones</ion-title>
+    <ion-title class="center">Publicaciones</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Publicaciones</ion-title>
+      <ion-title size="large" class="center">Publicaciones</ion-title>
     </ion-toolbar>
   </ion-header>
   <!-- Lista de las publicaciones -->
@@ -30,6 +30,7 @@
   </ion-fab>
 </ion-content>
 
+<!-- Modal para confirmar la eliminación de una publicación -->
 <app-modal-eliminar-publicacion
   [isModalOpen]="isModalEliminacionOpen"
   (closeModalEvent)="closeModalEliminacion()"
