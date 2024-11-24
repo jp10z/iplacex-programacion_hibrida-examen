@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgModel } from '@angular/forms';
 import {
   IonContent,
   IonHeader,
@@ -15,6 +15,7 @@ import {
   IonTextarea
 } from '@ionic/angular/standalone';
 import { FotografiaComponent } from "../../componentes/fotografia/fotografia.component";
+import { AlmacenamientoService } from 'src/app/servicios/almacenamiento.service';
 
 @Component({
   selector: 'app-crear-publicacion',
@@ -43,17 +44,43 @@ export class CrearPublicacionPage implements OnInit {
   // Variables usadas por el formulario de la página
   titulo: string = "";
   descripcion: string = "";
-  fotografia: string = "";
+  fotografiaBase64: string | undefined = undefined;
 
-  constructor() {
+  // ngModels del template.
+  @ViewChild("tituloInput") tituloInput!: NgModel;
+  @ViewChild("descripcionInput") descripcionInput!: NgModel;
+
+  constructor(private _almacenamientoService: AlmacenamientoService) {
 
   }
 
-  ngOnInit() {
+  async ngOnInit() {
+    // Al inicializar la página que se inicialice el plugin del servicio de almacenamiento.
+    await this._almacenamientoService.initPlugin();
+  }
+
+  ngAfterViewInit() {
+    // Se ejecuta después de inicializa la vista.
+    // Marca los inputs del formulario como tocados para que se muestren sus errores inmediatamente.
+    this.tituloInput.control.markAsTouched();
+    this.descripcionInput.control.markAsTouched();
+  }
+
+  onFotografiaBase64Change(fotografiaBase64: string) {
+    // Se ejecuta cuando la fotografía cambia.
+    this.fotografiaBase64 = fotografiaBase64;
   }
 
   async addPublicacion() {
-    
+    // Obtener fecha actual
+    const fecha = new Date();
+    // Llama al servico para que este agregue la publicacion en la base de datos.
+    await this._almacenamientoService.addPublicacion(
+      this.titulo,
+      this.descripcion,
+      this.fotografiaBase64 ?? "",
+      fecha
+    );
   }
 
 }

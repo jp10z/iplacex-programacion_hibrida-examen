@@ -33,7 +33,7 @@
       </ion-item>
       <!-- Componente de fotografía -->
       <ion-item>
-        <app-fotografia></app-fotografia>
+        <app-fotografia (fotografiaBase64Change)="onFotografiaBase64Change($event)"></app-fotografia>
       </ion-item>
       <!-- Descripción -->
       <ion-item>
@@ -47,8 +47,17 @@
           autoGrow="true"
           #descripcionInput="ngModel" />
       </ion-item>
+      <ion-item>
+        <!-- Botón que llama al guardado de la publicación,
+        está deshabilitado mientras haya algún error en el formulario o si aún no se selecciona una foto -->
+        <ion-button
+          size="default"
+          class="btn-agregar"
+          [disabled]="!tituloInput.valid || !descripcionInput.valid || !fotografiaBase64"
+          (click)="addPublicacion()"
+          >
+          Guardar
+        </ion-button>
+      </ion-item>
     </ion-list>
-    <ion-button class="btn-agregar" [disabled]="!tituloInput.valid || !descripcionInput.valid" (click)="addPublicacion()">
-      Guardar
-    </ion-button>
 </ion-content>
