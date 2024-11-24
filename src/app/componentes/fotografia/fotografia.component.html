@@ -1,13 +1,13 @@
 <!-- Se alinea el botón y la imágen una al lado de la otra -->
 
   <div class="container">
-      <ion-button color="dark" (click)="null">
+      <ion-button color="dark" (click)="capturarFotografia()">
         <ion-icon slot="icon-only" name="camera-outline"></ion-icon>
         &nbsp;Fotografía
       </ion-button>
       <ion-img
-        src="assets/imagen-placeholder.svg"
-        alt="The Wisconsin State Capitol building in Madison, WI at night"
+        [src]="fotografiaSRC"
+        alt="Imágen fotografica"
         style="height: 120px;"
       ></ion-img>
     </div>
