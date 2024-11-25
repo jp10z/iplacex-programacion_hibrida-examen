@@ -55,6 +55,7 @@ export class PublicacionesPage implements OnInit {
   }
 
   closeModalEliminacion() {
+    // Cierra el modal de eliminación
     this.isModalEliminacionOpen = false;
   }
 

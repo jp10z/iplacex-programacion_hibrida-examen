@@ -13,7 +13,7 @@ export class ModalEliminarPublicacionComponent  implements OnInit {
 
   // Para indicar si el modal debe estar abierto
   @Input() isModalOpen: boolean = false;
-  // Event emitter para cuando se cierra el modal
+  // Event emitter para notificar cuando se cierra el modal
   @Output() closeModalEvent = new EventEmitter();
   // Evento para cuando se confirma la eliminación de la publicación
   @Output() eliminarPublicacionEvent = new EventEmitter();

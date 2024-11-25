@@ -67,7 +67,7 @@ export class CrearPublicacionPage implements OnInit {
   }
 
   onFotografiaBase64Change(fotografiaBase64: string) {
-    // Se ejecuta cuando la fotografía cambia.
+    // Se ejecuta cuando se toma una fotografia desde el componente fotografia.
     this.fotografiaBase64 = fotografiaBase64;
   }
 
